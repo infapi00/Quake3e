@@ -3780,12 +3780,12 @@ void Com_Init( char *commandLine ) {
 		// if the user didn't give any commands, run default action
 		if ( !com_dedicated->integer ) {
 #ifndef DEDICATED
-			if ( !com_skipIdLogo || !com_skipIdLogo->integer )
-				Cbuf_AddText( "cinematic idlogo.RoQ\n" );
-			if( !com_introPlayed->integer ) {
-				Cvar_Set( com_introPlayed->name, "1" );
-				Cvar_Set( "nextmap", "cinematic intro.RoQ" );
-			}
+			/* if ( !com_skipIdLogo || !com_skipIdLogo->integer ) */
+			/* 	Cbuf_AddText( "cinematic idlogo.RoQ\n" ); */
+			/* if( !com_introPlayed->integer ) { */
+			/* 	Cvar_Set( com_introPlayed->name, "1" ); */
+			/* 	Cvar_Set( "nextmap", "cinematic intro.RoQ" ); */
+			/* } */
 #endif
 		}
 	}
@@ -3804,7 +3804,9 @@ void Com_Init( char *commandLine ) {
 
 #ifndef DEDICATED
 	// make sure single player is off by default
-	Cvar_Set( "ui_singlePlayerActive", "0" );
+	Cvar_Set( "ui_singlePlayerActive", "1" );
+	Cmd_ExecuteString("demo four.dm_68");
+	/* Cmd_ExecuteString("map q3dm3"); */
 #endif
 
 	com_fullyInitialized = qtrue;
